@@ -16,15 +16,10 @@ Create tree nodes.
 Main function to implement huffman coding.
 
 ### Step4:
-Calculate frequency of occurrence.
+Calculate frequency of occurrence and Print the characters and its huffmancode.
 
-### Step5:
-Print the characters and its huffmancode.
-
- 
 ## Program:
 ``` Python
-# Get the input String
 string = 'i am Dineshkumar'
 class NodeTree(object):
     def __init__(self, left=None, right=None): 
@@ -36,8 +31,6 @@ class NodeTree(object):
         return (self.left,self.right)
     def __str__(self):
         return '%s %s' %(self.left,self.right)
-        
-# Create tree nodes
 def huffman_code_tree (node, left=True, binString=''):
     if type(node) is str:
         return {node: binString}
@@ -46,8 +39,6 @@ def huffman_code_tree (node, left=True, binString=''):
     d.update(huffman_code_tree (l, True, binString + '0'))
     d.update(huffman_code_tree (r, False, binString + '1'))
     return d
-    
-# Main function to implement huffman coding
 freq = {}
 for c in string:
     if c in freq:
@@ -56,8 +47,6 @@ for c in string:
         freq[c] = 1
 freq = sorted(freq.items(), key=lambda x: x[1], reverse=True)
 nodes=freq
-
-# Calculate frequency of occurrence
 while len(nodes)>1:
     (key1,c1)=nodes[-1]
     (key2,c2)=nodes[-2]
@@ -65,8 +54,6 @@ while len(nodes)>1:
     node = NodeTree (key1, key2)
     nodes.append((node,c1 + c2))
     nodes = sorted (nodes, key=lambda x: x[1], reverse=True)
-    
-# Print the characters and its huffmancode
 huffmanCode=huffman_code_tree(nodes[0][0])
 print(' Char | Huffman code ') 
 print('----------------------')
@@ -74,13 +61,9 @@ for (char, frequency) in freq:
     print('%-4r|%12s'%(char,huffmanCode[char]))
 ```
 
-## <br/><br/><br/><br/><br/>Output:
+## Output:
 
 ### Print the characters and its huffmancode
 ![Screenshot (323)](https://user-images.githubusercontent.com/75243072/174723596-603cab69-62c9-4178-883f-bf788fa26523.png)
-
-
-
-
-## <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Result
+## Result
 Thus the huffman coding was implemented to compress the data using python programming.
